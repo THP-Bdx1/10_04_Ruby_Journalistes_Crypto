@@ -2,11 +2,11 @@ journalistes = ["@jcunniet","@PaulLampon","@Aziliz31","@ssoumier","@marionsouzea
 
 puts "Il y a #{journalistes.length} journalistes"
 
-journalistesnum = journalistes.grep /[0-9]/
+journalistesnum = journalistes.grep /[0-9]/     #grep est utilisé pour chercher une structure bien précise
 puts "Il y a #{journalistesnum.length} handles qui contiennent un numéro"
 
-puts "Il y a #{journalistes.select{|str| str =~ /aude/i}.length} handles qui contiennent les 4 lettres du prénom Aude à la suite"
-
+puts "Il y a #{journalistes.select{|e| e =~ /aude/i}.length} handles qui contiennent les 4 lettres du prénom Aude à la suite"
+# la fonction select va sélectionner un handle comportant les spécificités demandées: ici un handle comportant "aude"
 n = 0
 journalistes.each do |m|
     r=m.chars
@@ -15,6 +15,7 @@ journalistes.each do |m|
     end
 end
 puts "Il y a #{n} handles qui commencent par une majuscule"
+#on divise d'abord chaque handle en charactères individuels. On recherche à la 2e position la condition "le caractère est identique au caractère en majuscule."
 
 journalistesmaj = journalistes.grep /[A-Z]/
 
@@ -28,7 +29,7 @@ journalistes.each do |m|
     end
 end
 end
-
+#idem, on décompose en caractères, et à chaque fois on y vérifie s'il y a un "_". S'il y en a un on comptabilise 1 et on continue à chercher.
 
 puts "Il y a #{n} _ dans tous les pseudos confondus"
 
