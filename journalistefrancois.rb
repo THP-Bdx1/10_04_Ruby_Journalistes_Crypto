@@ -32,16 +32,17 @@
 	end
 
 	def tiret
-	tiret = @journalist.select {|e| e =~ /_/ }
-	puts "#{tiret.size}" " journalistes on un underscore dans leur pseudonyme ."
+	tiret = @journalist.join   
+	puts "Il y à #{tiret.count('_')} underscore en tout "
 	end 
-
+ 
 	def get
 	puts "Appuyez sur entré pour la liste dans l'ordre alphabétique"
 	end
 
 	def suite
 	order = @journalist.sort_by! {|m| m.downcase }
+	puts "Liste dans l'ordre alphabétique :"
 	print order
  	end
 
