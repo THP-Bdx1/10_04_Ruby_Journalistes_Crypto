@@ -5,24 +5,25 @@ value=["$6558.07", "$468.95", "$0.487526", "$762.84", "$8.86", "$85.26", "$0.151
 crypto_value = crypto.zip(value).to_h
 #print crypto_value
 
-def largest_hash(hash)
-    hash.max_by{|c,v| v
-    v =v[1..-1]
-    v=v.to_f}
+def largest_hash(hash) #Création d'une fonction qui va chercher la plus grosse valeur dans le hash .
+    max = hash.max_by{|c,v| v # la fonction .max_by{|c,v|} , ici c=crypto et v=value . c et v permet  d'orienter la fonction dans le hash vers le v.
+    v =v[1..-1]			# v[1..-1] permet d'enlever le dollars dans la string v .
+    v=v.to_f}			# v=v.to_f permet de lire une string en chiffre .
+    max[0]				#max[0] le resultat est le nom de la crypto et non la valeur .
 end
-
 puts "#{largest_hash(crypto_value)} a la plus grosse valeur" 
 
-def min_hash(hash)
-    hash.min_by{|c,v| v
+def min_hash(hash)	
+    min = hash.min_by{|c,v| v
     v =v[1..-1]
     v=v.to_f}
+    min[0]
 end
 
 puts  "#{min_hash(crypto_value)} a la plus petite valeur"
 
 coin=crypto_value.select {|c,v| c =~/coin/i}
-puts "Il y a #{coin.size} crypto qui contiennent le mot coin."
+puts "Il y à #{coin.size} crypto qui contiennent le mot coin."
 
 def inf(hash)
     hash.select{|c,v|
@@ -32,6 +33,6 @@ def inf(hash)
                     }
 end
 
-puts "Il y a #{inf(crypto_value).size} devises dont le cours est inférieur à 6000$."
+puts "Il y à #{inf(crypto_value).size} devises dont le cours est inférieur à 6000$."
 
 puts "#{largest_hash(inf(crypto_value))} est la plus grosse devise inférieure à 6000$."
